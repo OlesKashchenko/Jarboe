@@ -54,3 +54,8 @@ $translates = $translator->getAllStatic();
 // get localized data like this
 Translator.t('Спасибо, ваша заявка принята!')
 ```
+
+# License
+MIT with additional restrictions:
+
+1. SmartAdmin Responsive template must be bought.
