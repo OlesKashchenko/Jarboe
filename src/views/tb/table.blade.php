@@ -70,7 +70,7 @@
     
         @include('admin::tb.table_tfoot')
 
-</table> 
+</table>
 
 @include('admin::tb.table_pagination')
 

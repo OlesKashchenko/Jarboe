@@ -899,8 +899,11 @@ var TableBuilder = {
         if (jQuery('div[id$="-wysiwyg"]', context).length) {
             jQuery('div[id$="-wysiwyg"]', context).code('');
         }
+
         // redactor
-        jQuery('textarea[id$="-wysiwyg"]').redactor('code.set', '');
+        if (jQuery('textarea[id$="-wysiwyg"]').redactor()) {
+            jQuery('textarea[id$="-wysiwyg"]').redactor('code.set', '');
+        }
 
         jQuery('input, textarea', context).removeClass('valid').removeClass('invalid');
         jQuery('.state-success, .state-error', context).removeClass('state-success').removeClass('state-error');
