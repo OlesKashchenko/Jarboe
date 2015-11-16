@@ -87,6 +87,9 @@ class TreeCatalogController implements IObservable
             case 'ckeditor_image_upload':
                 return $this->handlePhotoUploadFromWysiwygCkeditor();
 
+            case 'redactor_image_upload':
+                return $this->handlePhotoUploadFromWysiwygRedactor();
+
             default:
                 return $this->handleShowCatalog();
         }
@@ -421,6 +424,26 @@ class TreeCatalogController implements IObservable
             '</body></html>'
         );
     } // end handlePhotoUploadFromWysiwygCkeditor
+
+    protected function handlePhotoUploadFromWysiwygRedactor()
+    {
+        $file = Input::file('file');
+
+        $extension = $file->guessExtension();
+        $fileName = md5_file($file->getRealPath()) .'_'. time() .'.'. $extension;
+
+        $prefixPath = 'storage/tb-tree/upload/';
+        $postfixPath = date('Y') .'/'. date('m') .'/'. date('d') .'/';
+        $destinationPath = $prefixPath . $postfixPath;
+
+        $file->move($destinationPath, $fileName);
+
+        return Response::json(
+            array(
+                'filelink' => URL::to($destinationPath . $fileName)
+            )
+        );
+    } // end handlePhotoUploadFromWysiwygRedactor
 
     public function attachObserver(IObserver $observer)
     {
