@@ -415,10 +415,10 @@ class TreeCatalogController implements IObservable
 
         $file->move($destinationPath, $fileName);
 
-        // fime: refactor this wtf!
+        // fixme: refactor this wtf!
         return Response::make(
             '<html><body>' .
-            '<script src="/js/libs/jquery-1.9.1.js"></script>' .
+            '<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>' .
             '<script type="text/javascript">window.parent.CKEDITOR.instances["'. $instance .'"].insertHtml("<img src=\''. URL::to($destinationPath . $fileName) .'\'>"); ' .
             'jQuery(".cke_dialog_ui_button").each(function() { if (jQuery(this).html() == "Cancel") { jQuery(this).click(); }});</script>' .
             '</body></html>'

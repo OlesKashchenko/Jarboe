@@ -29,6 +29,8 @@
         CKEDITOR.config.height = "400";
         CKEDITOR.config.baseFloatZIndex = "99999";
 
-        CKEDITOR.replace('{{$name}}-wysiwyg');
+        CKEDITOR.replace('{{$name}}-wysiwyg', {
+            filebrowserImageUploadUrl: '/admin/tree?query_type=ckeditor_image_upload&instance=' + '{{$pre . $name . $tab['postfix']}}-wysiwyg'
+        });
     });
 </script>
