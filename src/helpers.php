@@ -40,7 +40,9 @@ if (!function_exists('__'))
         
         $word = Yaro\Jarboe\Helpers\Translate::get($args[0], \App::getLocale(), $namespace);
         if (!$word) {
-            $word = $args[0];
+            // fixme:
+            //$word = $args[0];
+            $word = '';
         }
 
         $params = array_slice($args, 1);
